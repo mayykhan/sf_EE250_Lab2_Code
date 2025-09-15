@@ -16,13 +16,17 @@ int main(int argc, char const *argv[])
 	char socket_read_buffer[1024];
 	
 	// TODO: Fill out the server ip and port
-	std::string server_ip = "";
+	std::string server_ip = "127.0.0";
 	std::string server_port = "";
 
 	int opt = 1;
 	int client_fd = -1;
 
 	// TODO: Create a TCP socket()
+	int sockfd = socket(AF_INET, SOCK_SOCKET, 0);
+	if (sockfd < 0) {
+		error("Error opening socket.");
+	}
 
 	// Enable reusing address and port
 	if (setsockopt(client_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) { 
@@ -44,10 +48,33 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
+	struct sockaddr_in serv_addr;
+	serv_addr.sin_port = htons(server_port);
+	if(connect(sockfd,(struct sockaddr *) &serv_addr, sizeof(serv_addr))<0) {
+		error("Error connecting");
+	}
+
 	// TODO: Retreive user input
+	printf("Please enter the message: ");
+    bzero(buffer,256);
+    fgets(buffer,255,stdin);
+
 	// TODO: Send() the user input to the server
+	n = write(sockfd,buffer,strlen(buffer));
+    if (n < 0) {	
+         error("ERROR writing to socket");
+	}
+
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
+	bzero(buffer,256);
+    n = read(sockfd,buffer,255);
+    if (n < 0) {
+         error("ERROR reading from socket");
+	}
+	printf("%s\n",buffer);
+
 	// TODO: Close() the socket
+	close(sockfd);
 
 	return 0; 
 } 
