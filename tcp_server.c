@@ -18,13 +18,10 @@ void error(const char *msg)
 int main(int argc, char *argv[])
 {
     /* 1. What is argc and *argv[]?
-     * Argc is the number og arguments the main function takes in, whihc *argv[] is the pointer/refernce to the character array of arguments.
-     */
+     * */
     int sockfd, newsockfd, portno;
     /* 2. What is a UNIX file descriptor and file descriptor table?
-     *  A UNIX file descriptor is an integer that represents an open file. The program uses this number to read/write files.
-     * A file descriptor table is a data table that 
-    */
+     * */ 
     socklen_t clilen;
 
     struct sockaddr_in serv_addr, cli_addr;
@@ -32,7 +29,7 @@ int main(int argc, char *argv[])
      *
      */
     
-    int n;
+    int n;data
     if (argc < 2) {
         fprintf(stderr,"ERROR, no port provided\n");
         exit(1);
