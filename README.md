@@ -6,12 +6,30 @@
 
 ## Lab Question Answers
 
+Question 1: How did the reliability of UDP change when you added 50% loss to your local
+environment? Why did this occur?
+After adding the 50% loss to the local host environment, UDP reliability significantly decreased
+and did not receive 100% of the information we had sent.
+Question 2: How did the reliability of TCP change? Why did this occur?
+The reliability of the TCP was virtually unnoticeable, we were still able to receive all the
+data/information we had sent. This occurred because TCP is programmed and guaranteed to be
+reliable with checks from the client of the connection to the server instead of solely receiving
+and sending like how UDP functions.
+Question 3: How did the speed of the TCP response change? Why might this happen?
+The TCP response took much longer to get through to the server than the UDP server. This is
+because TCP is designed to optimize accuracy and packages being received in order over the
+time it takes to send them, while UDP does the opposite.
+
+
+
+
+Coding Questions:
 Answer for Question 1: 
 
 1. What is argc and *argv[]?
 
     Argc is the number of arguments the main function takes in, whihc *argv[] is the pointer/refernce to the character array of arguments.
-     */
+    
 
 
 2. What is a UNIX file descriptor and file descriptor table?
