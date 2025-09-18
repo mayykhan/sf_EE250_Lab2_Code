@@ -2,7 +2,7 @@
 
 ## Team Members
 - May Khan github.com/mayykhan
-- Shreya Nair github/com/shreyanair612
+- Shreya Nair github.com/shreyanair612
 
 ## Lab Questions
 
